@@ -35,63 +35,9 @@ public class MenuActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        if (id == R.id.action_logout) {
-            askLogoutConfirmation();
-            return true;
-        }
+        MySingleton.onOptionsItemSelected(this, item);
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void startMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    private Boolean askLogoutConfirmation() {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-// 2. Chain together various setter methods to set the dialog characteristics
-        builder.setMessage(R.string.act_menu_logout_dialog_message)
-                .setTitle(R.string.act_menu_logout_dialog_title);
-
-
-// Add the buttons
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                Log.d("XXXXXXX", "Ok button");
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putBoolean("is_logged", false);
-                editor.commit();
-                startMainActivity();
-                finish();
-            }
-        });
-
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Log.d("XXXXXXX", "Cancel button");
-            }
-
-        });
-
-        // Create the AlertDialog
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        return false;
     }
 
     public void webViewBtnClick(View view) {
