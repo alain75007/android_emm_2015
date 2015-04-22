@@ -22,4 +22,5 @@
     <string name="title_activity_photo">PhotoActivity</string>
     <string name="act_photo_bnt_submit">Take a photo!</string>
     <string name="act_menu_btn_photo">Photo</string>
+    <string name="action_logout">Logout</string>
 </resources>
