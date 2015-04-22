@@ -22,4 +22,7 @@
     <string name="act_main_submit">Envoyer</string>
     <string name="act_menu_btn_photo">Photo</string>
     <string name="act_menu_btn_webview">WebView</string>
+    <string name="action_lang_fr">Français</string>
+    <string name="action_logout">Déconnecter</string>
+    <string name="action_lang_en">Anglais</string>
 </resources>

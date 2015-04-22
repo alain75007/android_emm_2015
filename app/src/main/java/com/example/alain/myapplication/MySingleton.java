@@ -5,11 +5,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.MenuItem;
+
+import java.util.Locale;
 
 /**
  * Created by alain on 22/04/15.
@@ -33,15 +36,59 @@ public class MySingleton {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        if (id == R.id.action_logout) {
-            askLogoutConfirmation(activity);
-            return true;
+        switch(id) {
+            case R.id.action_settings:
+                return true;
+            case R.id.action_logout:
+                askLogoutConfirmation(activity);
+                return true;
+            case R.id.action_lang_en :
+                changeLang(activity, "en");
+
+                return true;
+            case R.id.action_lang_fr:
+                changeLang(activity, "fr");
+                return true;
         }
         return true;
+    }
+
+    private static void changeLang(ActionBarActivity activity, String lang ) {
+        saveLang(activity, lang);
+        setLocale(activity, lang);
+        activity.recreate();
+    }
+
+    private static void saveLang(ActionBarActivity activity, String lang) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("lang", lang);
+        editor.apply();
+    }
+
+/*    private static void restartApp(ActionBarActivity activity ) {
+        Intent i = activity.getPackageManager()
+                .getLaunchIntentForPackage( activity.getPackageName() );
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        activity.finish();
+        activity.startActivity(i);
+
+    }*/
+
+    public static void restoreLang(ActionBarActivity activity) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
+        setLocale(activity, preferences.getString("lang", "en"));
+    }
+
+    private static void setLocale(ActionBarActivity activity, String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config2 = new Configuration();
+        config2.locale = locale;
+        // updating locale
+        activity.getBaseContext().getResources().updateConfiguration(config2, activity.getBaseContext().getResources().getDisplayMetrics());
+
+
     }
 
     private static Boolean askLogoutConfirmation( final ActionBarActivity activity) {
@@ -57,10 +104,10 @@ public class MySingleton {
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Log.d("XXXXXXX", "Ok button");
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(((Activity) activity).getApplicationContext());
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext());
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putBoolean("is_logged", false);
-                editor.commit();
+                editor.apply();
                 startMainActivity(activity);
                 activity.finish();
             }

@@ -19,8 +19,11 @@ public class PhotoActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        MySingleton.restoreLang(this);
         setContentView(R.layout.activity_photo);
+        setTitle(R.string.title_activity_photo);
+        // TODO put this on onResume (if current lang changed)
+        // TODO add restore Lang to other activity
         setImageBitmap();
     }
 

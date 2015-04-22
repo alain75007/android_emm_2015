@@ -23,4 +23,6 @@
     <string name="act_photo_bnt_submit">Take a photo!</string>
     <string name="act_menu_btn_photo">Photo</string>
     <string name="action_logout">Logout</string>
+    <string name="action_lang_fr">French</string>
+    <string name="action_lang_en">English</string>
 </resources>
