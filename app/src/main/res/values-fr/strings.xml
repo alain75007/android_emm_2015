@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mon Application</string>
+    <string name="act_menu_logout_dialog_message">Etes-vous sûr de vouloir vous déconnecter?</string>
+    <string name="act_menu_logout_dialog_title">Se déconnecter</string>
+    <string name="act_photo_bnt_submit">Prendre une photo!</string>
+    <string name="act_webview_go">Go!</string>
+    <string name="act_webview_no_url_message">Entrez une URL S.V.P.!!</string>
+    <string name="act_webview_url_hint">URL</string>
+    <string name="action_settings">Préférences</string>
+    <string name="cancel">Annuler</string>
+    <string name="hello_world">Bonjour à tous!!!</string>
+    <string name="ok">Ok</string>
+    <string name="title_activity_menu">Choix d\'activité</string>
+    <string name="title_activity_photo">Photo</string>
+    <string name="title_activity_web_view">WebView</string>
+    <string name="act_main_email">Entrer votre email</string>
+    <string name="act_main_email_notfound">Entrez votre email S.V.P.!!!!</string>
+    <string name="act_main_invalid_password">Mot-de-passe invalide</string>
+    <string name="act_main_password">Mot-de-passe</string>
+    <string name="act_main_password_notfound">Entrez un mot-de-passe S.V.P.!!!</string>
+    <string name="act_main_submit">Envoyer</string>
+    <string name="act_menu_btn_photo">Photo</string>
+    <string name="act_menu_btn_webview">WebView</string>
+</resources>
