@@ -51,7 +51,7 @@ public class PhotoActivity extends ActionBarActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != RESULT_CANCELED) return;
+        if (resultCode == RESULT_CANCELED) return;
 
         super.onActivityResult(requestCode, resultCode, data);
 
