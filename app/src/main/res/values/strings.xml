@@ -25,4 +25,7 @@
     <string name="action_logout">Logout</string>
     <string name="action_lang_fr">French</string>
     <string name="action_lang_en">English</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

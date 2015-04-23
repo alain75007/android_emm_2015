@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -13,12 +14,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.alain.myapplication.TestFragment.OnFragmentInteractionListener;
 
-public class MenuActivity extends ActionBarActivity {
+
+public class MenuActivity extends ActionBarActivity implements OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_menu);
         Intent intent = getIntent();
         String email = intent.getStringExtra("email");
@@ -48,5 +53,10 @@ public class MenuActivity extends ActionBarActivity {
     public void photoBtnClick(View view) {
         Intent intent = new Intent(this, PhotoActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
